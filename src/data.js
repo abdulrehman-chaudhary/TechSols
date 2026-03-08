@@ -226,3 +226,8 @@ export const itServices = [
   "Maintenance and Support",
   "Networking and Infrastructure",
 ];
+export const aboutUsParagraphs = [
+  "At TechSols, we're more than just a technology company – we're your partners in innovation. With a passion for problem-solving and a commitment to excellence, we empower businesses to thrive in the digital landscape. Our dedicated team of experts brings together a wealth of experience in mobile app development, web app development, WordPress development, digital marketing, UI/UX design, and graphic design.",
+  "We believe in the transformative power of technology to drive growth and make a difference. That's why we work tirelessly to understand your unique challenges and tailor our solutions to meet your specific needs. Whether you're a startup looking to make your mark or an established enterprise aiming to stay ahead of the curve, we're here to support you every step of the way.",
+  "At TechSols, we're driven by a simple yet powerful mission: to deliver innovative solutions that inspire, engage, and propel businesses towards success. Let's embark on this digital journey together and turn your ideas into reality.",
+];

@@ -4,22 +4,32 @@ import { navLinks } from "../../data";
 import Sidebar from "./Sidebar";
 
 const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return (
+      savedTheme === "dark" ||
+      (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    );
+  });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const toggleTheme = () => {
+  useEffect(() => {
     if (isDarkMode) {
-      document.documentElement.classList.remove("dark");
-      setIsDarkMode(false);
-    } else {
       document.documentElement.classList.add("dark");
-      setIsDarkMode(true);
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => !prev);
   };
 
   return (
     <>
-      <header className="w-full bg-black flex justify-center items-center">
+      <header data-aos="fade-down" className="w-full bg-black flex justify-center items-center">
         <div className="w-[95%] md:w-[88%] lg:w-[85%] xl:w-[82%] max-w-360 flex items-center justify-between py-5 md:py-5.25">
           {/* Logo */}
           <div className="shrink-0 flex items-center cursor-pointer">
@@ -30,7 +40,7 @@ const Header = () => {
             />
           </div>
           {/* Navigation Links */}
-          <nav className="hidden md:flex gap-3.75 lg:gap-8">
+          <div className="hidden md:flex gap-3.75 lg:gap-8">
             {navLinks?.map((link) => (
               <a
                 key={link.name}
@@ -40,7 +50,7 @@ const Header = () => {
                 {link.name}
               </a>
             ))}
-          </nav>
+          </div>
           <div className="flex items-center gap-3 md:gap-2.5 lg:gap-6">
             {/* Toggle */}
             <div>

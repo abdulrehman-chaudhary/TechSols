@@ -6,7 +6,7 @@ const ServicesSection = () => {
     <section className="w-full bg-white dark:bg-dark-bg flex justify-center items-center py-10 md:py-16">
       <div className="max-w-360 flex flex-col justify-center items-center gap-8 sm:gap-10 lg:gap-15">
         {/* Header */}
-        <div className="text-center">
+        <div data-aos="fade-up" className="text-center">
           <h2 className="text-h3 sm:text-4xl md:text-5xl font-bold text-black dark:text-white">
             Our{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-blue to-brand-cyan">
@@ -18,6 +18,7 @@ const ServicesSection = () => {
           {services?.map((service, index) => (
             <div
               key={index}
+              data-aos="fade-up" data-aos-delay={index * 100}
               className="group h-full p-[1.5px] rounded-4xl bg-linear-to-b from-brand-blue to-brand-cyan dark:bg-none transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
             >
               {/* Inner Card Content */}

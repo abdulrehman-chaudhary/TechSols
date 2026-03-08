@@ -20,7 +20,7 @@ const ProjectsSection = () => {
     <section className="w-full bg-white dark:bg-black py-10 md:py-20 flex justify-center">
       <div className="w-[95%] md:w-[88%] lg:w-[85%] xl:w-[75%] max-w-360 flex flex-col gap-8 md:gap-14">
         {/* Header */}
-        <div className="text-center">
+        <div data-aos="fade-up" className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white">
             Our{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-400">
@@ -28,7 +28,7 @@ const ProjectsSection = () => {
             </span>
           </h2>
         </div>
-        <div className="flex flex-col lg:flex-row w-full bg-white rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl min-h-125">
+        <div data-aos="fade-up" data-aos-delay="200" className="flex flex-col lg:flex-row w-full bg-white rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl min-h-125">
           {/* LEFT */}
           <div className="w-full lg:w-[45%] bg-white p-8 md:p-12 md:pr-22  gap-4 flex flex-col justify-between">
             <div className="flex flex-col gap-7.5">
@@ -39,7 +39,7 @@ const ProjectsSection = () => {
                 {currentProject.description}
               </p>
             </div>
-            {/* Navigation Buttons */}
+            {/* Buttons */}
             <div className="flex gap-4">
               <button
                 onClick={handlePrev}

@@ -1,37 +1,43 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { testimonials } from "../../data";
 
 const Testimonials = () => {
+  const total = testimonials.length;
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: "start",
     containScroll: "trimSnaps",
+    dragFree: false,
   });
 
-  // Scroll progress state
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
-  const scrollNext = () => emblaApi && emblaApi.scrollNext();
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
 
-  const onScroll = useCallback((emblaApi) => {
-    const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
-    setScrollProgress(progress * 100);
-  }, []);
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setActiveIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
 
-    onScroll(emblaApi);
-    emblaApi.on("scroll", onScroll);
-    emblaApi.on("reInit", onScroll);
+    onSelect();
+    emblaApi.on("select", onSelect);
 
     return () => {
-      emblaApi.off("scroll", onScroll);
-      emblaApi.off("reInit", onScroll);
+      emblaApi.off("select", onSelect);
     };
-  }, [emblaApi, onScroll]);
+  }, [emblaApi, onSelect]);
+
 
   return (
     <section className="bg-white dark:bg-dark-bg flex justify-center py-10 md:py-16 text-black dark:text-white overflow-hidden">
@@ -93,7 +99,7 @@ const Testimonials = () => {
           <div className="flex items-center gap-4">
             <button
               onClick={scrollPrev}
-              className="w-12 h-12 rounded-full border flex items-center justify-center bg-white border-brand-gray shadow-md"
+              className="w-12 h-12 rounded-full border flex items-center justify-center bg-white border-brand-gray shadow-md cursor-pointer"
             >
               <img
                 src="/assets/svgs/arrow-right-black.svg"
@@ -103,15 +109,16 @@ const Testimonials = () => {
             </button>
             <button
               onClick={scrollNext}
-              className="w-12 h-12 rounded-full border flex items-center justify-center bg-white border-brand-gray shadow-md"
+              className="w-12 h-12 rounded-full border flex items-center justify-center bg-white border-brand-gray shadow-md cursor-pointer"
             >
               <img src="/assets/svgs/arrow-right-black.svg" alt="next" />
             </button>
 
+            {/* Progress Bar */}
             <div className="flex-1 h-1.25 bg-brand-gray rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#1E5BFF] rounded-full transition-all duration-100"
-                style={{ width: `${scrollProgress}%` }}
+                className="h-full bg-[#1E5BFF] rounded-full transition-all duration-300 ease-out"
+                style={{ width: `${((activeIndex + 1) / total) * 100}%` }}
               />
             </div>
           </div>

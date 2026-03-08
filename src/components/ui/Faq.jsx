@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { faqs } from "../../data";
 
 const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState(false);
+  const [openIndex, setOpenIndex] = useState(0);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
@@ -19,7 +19,7 @@ const FAQSection = () => {
         </div>
         {/* FAQ List */}
         <div className="flex flex-col gap-3.75">
-          {faqs.map((faq, index) => {
+          {faqs?.map((faq, index) => {
             return (
               <div
                 key={index}
@@ -53,6 +53,7 @@ const FAQSection = () => {
                     </div>
                   </button>
                 </div>
+                {/* Answer */}
                 <div
                   className={`transition-all duration-300 ease-in-out overflow-hidden
             ${

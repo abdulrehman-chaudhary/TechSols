@@ -5,7 +5,7 @@ const HeroSection = () => {
     <section className="w-full flex justify-center items-center bg-white dark:bg-dark-bg py-10 md:py-16">
       <div className="w-[95%] md:w-[88%] lg:w-[85%] xl:w-[82%] max-w-360 flex flex-col md:flex-row items-center gap-10 md:gap-3">
         {/* Left */}
-        <div className=" flex flex-1 flex-col gap-6 md:gap-7.5 items-center md:items-start text-center md:text-left">
+        <div data-aos="fade-right" className=" flex flex-1 flex-col gap-6 md:gap-7.5 items-center md:items-start text-center md:text-left">
           <div className="flex flex-col gap-2.5">
             <h1 className="text-3xl md:text-4xl lg:text-4xl xl:text-h1 font-extrabold text-brand-black dark:text-white capitalize leading-tight">
               Transforming Ideas <br className="hidden lg:block" /> Into{" "}
@@ -31,7 +31,7 @@ const HeroSection = () => {
           </div>
         </div>
         {/* Right Image */}
-        <div className="w-full md:w-[45%] flex justify-center md:justify-end">
+        <div data-aos="fade-left" className="w-full md:w-[45%] flex justify-center md:justify-end">
           <img
             src="/assets/images/herosection-image.png"
             alt="Digital Solutions Dashboard Illustration"

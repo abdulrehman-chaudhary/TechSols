@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <>
       {/* Top Section */}
-      <section className=" bg-brand-dark w-full flex justify-center items-center relative py-8 border-t border-brand-navy overflow-hidden">
+      <section data-aos="fade-up" className=" bg-brand-dark w-full flex justify-center items-center relative py-8 border-toverflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="/assets/images/footer-bg.png"
@@ -39,7 +39,7 @@ const Footer = () => {
         </div>
       </section>
       {/* Bottom Section */}
-      <footer className="bg-black text-white pt-16 pb-4 w-full flex justify-center items-center">
+      <footer data-aos="fade-up" data-aos-delay="200" className="bg-black text-white pt-16 pb-4 w-full flex justify-center items-center">
         <div className="w-[95%] md:w-[88%] lg:w-[85%] xl:w-[82%] max-w-360">
           <div className="flex flex-col gap-5 sm:gap-8 lg:gap-15">
             <div>
@@ -122,8 +122,8 @@ const Footer = () => {
           {/* Divider */}
           <div className="w-full h-px bg-linear-to-r from-brand-blue to-brand-cyan"></div>
           {/* Copyright */}
-          <div className="flex flex-col md:flex-row justify-between items-center py-6 gap-4">
-            <p className="text-white text-sm font-normal text-center md:text-left">
+          <div className="flex flex-col md:flex-row justify-between items-left md:items-center py-6 gap-4">
+            <p className="text-white text-sm font-normal text-left md:text-left">
               &copy; 2024 TechSols | All Rights Reserved
             </p>
             <div className="flex items-center gap-6">
